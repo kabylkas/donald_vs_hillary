@@ -12,26 +12,49 @@ dictionary = []
 #helper functions
 def process(sentence):
   count=0
-  sen = sentence
+  sen = sentence.lower()
+
+  sen = sen.replace("don't", " do not ")
+  sen = sen.replace("won't", " will not ")
+  sen = sen.replace("doesn't", " does not ")
+  sen = sen.replace("haven't", " have not ")
+  sen = sen.replace("hasn't", " has not ")
+  sen = sen.replace("can't", " can not ")
+  sen = sen.replace("couldn't", " could not ")
+  sen = sen.replace("wouldn't", " would not ")
+
   sen = sen.replace(".", " **period** ")
   sen = sen.replace("—", " **emdash** ")
+  sen = sen.replace("–", " **emdash** ")
   sen = sen.replace("-", " **dash** ")
   sen = sen.replace(",", " **comma** ")
   sen = sen.replace("!", " **exclamation** ")
+  sen = sen.replace("¡", "")
   sen = sen.replace("?", " **question** ")
+  sen = sen.replace("¿", "")
   sen = sen.replace(":", " **colon** ")
   sen = sen.replace(";", " **semicolon** ")
   sen = sen.replace("\"", " **quote** ")
+  sen = sen.replace("'s", " **possess** ")
+  sen = sen.replace("'", " **singlequote** ")
+  sen = sen.replace("‘", " **singlequote** ")
+  sen = sen.replace("’", " **singlequote** ")
+  sen = sen.replace("“", " **quoteopen** ")
+  sen = sen.replace("“", " **quoteclose** ")
   sen = sen.replace("(", " **bracketsopen** ")
   sen = sen.replace(")", " **bracketsclose** ")
   sen = sen.replace("[", " **sqbracketsopen** ")
   sen = sen.replace("]", " **sqbracketsclose** ")
   sen = sen.replace("{", " **curbracketsopen** ")
   sen = sen.replace("}", " **curbracketsclose** ")
+  sen = sen.replace("}", " **pipe** ")
   #TODO
   #do for links **link**
   #do for emails **email**
   #maybe do quoteopen quoteclose 
+  #maybe do for money **money**
+  #dates
+
   sen_num = ""
   for word in sen.split():
     temp_word = word.replace(" ", "")
@@ -44,16 +67,14 @@ def process(sentence):
     if word not in dictionary:
       dictionary.append(word)
 
-  filtered_sentence = sen_num.lower()
-  filtered_sentence = filtered_sentence.decode('ascii', errors='ignore').encode()
 
-  return filtered_sentence
+  return sen_num
 
 #read training set
 t = []
 corpus = []
 
-with open('./input/train.csv', 'rb') as train_file:
+with open('./input/train.csv', 'r') as train_file:
   reader = csv.reader(train_file, delimiter=',', quotechar='|')
   for row in reader:
     #get the target value
@@ -68,4 +89,3 @@ with open('./input/train.csv', 'rb') as train_file:
 
 dictionary = sorted(dictionary)
 
-print(dictionary)
