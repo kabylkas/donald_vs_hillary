@@ -26,7 +26,6 @@ def clean(sentence, stops):
   filtered_sentence = " ".join(filtered_sentence)
   filtered_sentence = re.sub('[!\;\:\_\-\*?.,\\\/()"\']', ' ', filtered_sentence)
   filtered_sentence = filtered_sentence.lower()
-  filtered_sentence = filtered_sentence.decode('ascii', errors='ignore').encode()
   for i in range(count):
     filtered_sentence+=" **number**"
   return filtered_sentence
@@ -35,7 +34,7 @@ def clean(sentence, stops):
 t = []
 corpus = []
 
-with open('../input/train.csv', 'rb') as train_file:
+with open('../input/train.csv', 'r') as train_file:
   reader = csv.reader(train_file, delimiter=',', quotechar='|')
   for row in reader:
     #get the target value
