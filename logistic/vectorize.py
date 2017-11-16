@@ -15,11 +15,15 @@ def clean(sentence, stops):
   e = False
   for word in sentence.split():
     word = word.replace(" ", "")
-
+    
     if word.isdigit():
       count+=1
     if word.isdigit():
       word = ""
+
+    if word in stops:
+      word = ""
+
     sen+=word+" "
 
   filtered_sentence = [word for word in sen.split() if word not in stops]

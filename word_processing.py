@@ -8,7 +8,6 @@ import re
 import pickle
 
 dictionary = []
-
 #helper functions
 def process(sentence):
   count=0
@@ -73,9 +72,9 @@ def process(sentence):
 #read training set
 t = []
 corpus = []
-
-with open('./input/train.csv', 'r') as train_file:
-  reader = csv.reader(train_file, delimiter=',', quotechar='|')
+dictionary = []
+with open(filename, 'r') as train_file:
+  reader = csv.reader(train_file, delimiter=',')
   for row in reader:
     #get the target value
     if (len(row)>1):
@@ -84,8 +83,9 @@ with open('./input/train.csv', 'r') as train_file:
       else:
         t.append(0)
 
-      #get the text 
-      corpus.append(process(row[1]))
-
+      #get the text
+      processed_sen = process(row[1])
+      corpus.append(processed_sen)
+      
 dictionary = sorted(dictionary)
-
+  

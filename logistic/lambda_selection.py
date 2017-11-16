@@ -113,7 +113,7 @@ for alpha in alphas:
     best_acc = numpy.amax(fold_accuracy)
     report_best_accuracy.append(best_acc)
     debug(1, "***Best accuracy={0:.2f}% | alpha={1} | lambda={2}".format(numpy.amax(best_acc*100), alpha, lamb))
-    with open("./dumps/results.txt", a) as out:
+    with open("./dumps/results.txt", "a") as out:
       out.write("***Best accuracy={0:.2f}% | alpha={1} | lambda={2}\n".format(numpy.amax(best_acc*100), alpha, lamb))
       
 
