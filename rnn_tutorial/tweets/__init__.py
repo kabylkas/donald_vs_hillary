@@ -10,11 +10,12 @@ import pickle
 class tweets:
   def __init__(self, filename, dict_size = 8000):
     self.dict_size = dict_size
-    self.t = []
-    self.df = {}
     self.corpus = []
     self.tokenized_corpus = []
-    self.df["string"] = self.loadTweets(filename)
+    self.df = {}
+    self.df["target"] = []
+    self.df["string"] = []
+    self.loadTweets(filename)
     self.df["as_numbers"] = self.tokenize_corpus()
     self.df["length"] = self.getLength()
 
@@ -85,10 +86,11 @@ class tweets:
       for row in reader:
         #get the target value
         if (len(row)>1):
-          if (row[0] == "realDonaldTrump"):
-            self.t.append(1)
-          else:
-            self.t.append(0)
+          if "realDonaldTrump" in row[0] or "HillaryClinton" in row[0]:
+            if (row[0] == "realDonaldTrump"):
+              self.df["target"].append(1)
+            else:
+              self.df["target"].append(0)
 
           #get the text
           processed_sen = self.process(row[1])
@@ -113,7 +115,7 @@ class tweets:
     l_sorted_by_freq = l_sorted_by_freq[:self.dict_size-1]
     d = [word[0] for word in l_sorted_by_freq]
     d.append("**unknown**")
-    return sorted(d)
+    self.df["string"] = sorted(d)
 
   def tokenize_corpus(self):
     tokenized_corpus = []
