@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 import nltk
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -15,9 +16,10 @@ class tweets:
     self.df = {}
     self.df["target"] = []
     self.df["string"] = []
-    self.loadTweets(filename)
+    self.d = self.loadTweets(filename)
     self.df["as_numbers"] = self.tokenize_corpus()
     self.df["length"] = self.getLength()
+    self.df = pd.DataFrame(data=self.df)
 
   #helper functions
   def process(self, sentence):
@@ -92,14 +94,14 @@ class tweets:
             else:
               self.df["target"].append(0)
 
-          #get the text
-          processed_sen = self.process(row[1])
-          self.corpus.append(processed_sen)
-          for word in processed_sen.split():
-            if word not in d:
-              d[word] = 1
-            else:
-              d[word] += 1
+            #get the text
+            processed_sen = self.process(row[1])
+            self.df["string"].append(processed_sen)
+            for word in processed_sen.split():
+              if word not in d:
+                d[word] = 1
+              else:
+                d[word] += 1
 
     # One of the ways to improve training is to mark
     # chunk of least frequent wordsrds as "unknowns".
@@ -115,19 +117,19 @@ class tweets:
     l_sorted_by_freq = l_sorted_by_freq[:self.dict_size-1]
     d = [word[0] for word in l_sorted_by_freq]
     d.append("**unknown**")
-    self.df["string"] = sorted(d)
+    return sorted(d)
 
   def tokenize_corpus(self):
     tokenized_corpus = []
-    for sentence in self.corpus:
+    for sentence in self.df["string"]:
       token = []
       for word in sentence.split():
-        if word in self.df:
+        if word in self.d:
           token.append(self.d.index(word))
         else:
-          token.append(self.df["string"].index("**unknown**"))
+          token.append(self.d.index("**unknown**"))
       
-      self.tokenized_corpus.append(token)
+      tokenized_corpus.append(token)
           
     return tokenized_corpus
 
@@ -135,10 +137,10 @@ class tweets:
     token = []
     sen = self.process(sentence)
     for word in sen.split():
-      if word in self.df["string"]:
-        token.append(self.df["string"].index(word))
+      if word in self.d:
+        token.append(self.d.index(word))
       else:
-        token.append(self.df["string"].index("**unknown**"))
+        token.append(self.d.index("**unknown**"))
 
     return token
 
