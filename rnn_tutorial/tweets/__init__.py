@@ -11,10 +11,12 @@ class tweets:
   def __init__(self, filename, dict_size = 8000):
     self.dict_size = dict_size
     self.t = []
+    self.df = {}
     self.corpus = []
     self.tokenized_corpus = []
-    self.d = self.loadTweets(filename)
-    #self.tokenize_corpus()
+    self.df["string"] = self.loadTweets(filename)
+    self.df["as_numbers"] = self.tokenize_corpus()
+    self.df["length"] = self.getLength()
 
   #helper functions
   def process(self, sentence):
@@ -114,25 +116,33 @@ class tweets:
     return sorted(d)
 
   def tokenize_corpus(self):
+    tokenized_corpus = []
     for sentence in self.corpus:
       token = []
       for word in sentence.split():
-        if word in self.d:
+        if word in self.df:
           token.append(self.d.index(word))
         else:
-          token.append(self.d.index("**unknown**"))
+          token.append(self.df["string"].index("**unknown**"))
       
       self.tokenized_corpus.append(token)
           
+    return tokenized_corpus
+
   def tokenize(self, sentence): 
     token = []
     sen = self.process(sentence)
     for word in sen.split():
-      if word in self.d:
-        token.append(self.d.index(word))
+      if word in self.df["string"]:
+        token.append(self.df["string"].index(word))
       else:
-        token.append(self.d.index("**unknown**"))
+        token.append(self.df["string"].index("**unknown**"))
 
     return token
 
+  def getLength(self):
+    length_list = []
+    for token in self.df["as_numbers"]:
+      length_list.append(len(token))
 
+    return length_list
