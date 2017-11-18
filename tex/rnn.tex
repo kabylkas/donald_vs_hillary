@@ -1,8 +1,14 @@
+\subsection*{2.5 Hyperparameter selection}
+The hyperparameters that we played with are batch size, state vector size, and the number of epochs spent to train the model. It was noticed that the batch size of 1 gives the best results regardless of the chosen model. The state vector size was \(x^{2}\) where \(x \in [1,2,...,9]\). We noticed that the model stops improving when \(x>7\), and it becomes computationally infeasible given the time frame we were given. It was mentioned in the class that one of the methods of regularization is "early training stopping". For this reason, we ran the program for 20 epochs for all values of x. It was also interesting to notice that batch size of 1 made the best results to occur in early epochs. We claim that this is due to the faster convergence. Finally, we picked the best accuracy on validation set, and re-run the training with the best \(x\) and upto the chosen epoch. 
 
-\subsection*{2.4 rnn implementation}
+\subsection*{2.5 RNN implementations}
+Different versions of RNN models were implemented, trained and tested. Namely, the following three RNN methods were tried out:
+\begin{itemize}
+	\item Vanilla RNN
+	\item LSTM
+	\item GRU
+\end{itemize}
 
-talk about rnn implementation and tensor flow. Lead into training
+\subsection*{2.5.1 Vanilla RNN}
 
-\subsection*{2.5 training}
-talk about training, and then lead into testing and results.
 
