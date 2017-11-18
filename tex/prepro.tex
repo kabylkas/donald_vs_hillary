@@ -1,7 +1,10 @@
 
-\subsection*{2.2 Preprocessing }
+\subsection*{2.2 Preprocessing and Tokenizing}
 
 %--------------------Talk about preprocessing that we did and flow into token stuff.
 
+In order to perform preprocessing on the data set, we first have to read the data from the input file. This was done with the help of the \texttt{reader} from the \texttt{csv} package. Using the \texttt{reader}, we were able to extract target values (labels), and the text (tweets), and store it in our dictionary. \\
 
+Once the data was extracted from the file, we processed the text. During the processing, we first transformed all text to lower case, then replaced certain text strings with better alternatives, for example, we replace \texttt{"don't"} with \texttt{"do not"}, \texttt{"can't"} with \texttt{"can not"}, and so on. We also replace several symbols with their names, for example, we replace \texttt{"."} with \texttt{"period"}, \texttt{":"} with \texttt{"colon"}, and so on. Once this step of processing the input text is done, we replace numbers and digits with \texttt{"number"}, and add the processed string to the dictionary. \\
 
+After adding each processed string to the dictionary, we examine it to track the frequency of all the words. Once we are finished reading all the input data, we now have the frequency of all the words that were processed. We then sort all the words that were entered in the dictionary, by their frequency, and use this sorted list to replace the least frequent words, with \texttt{"unknown"}. This helps us 
