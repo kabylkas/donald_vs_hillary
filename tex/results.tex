@@ -1,16 +1,18 @@
 
 \section*{3.Results}
 
-In this section, we provide the results for our experiments. We compare the results of our implementations of Vanilla RNN, LSTM, and GRU RNN models. We also modified and ran the Logistic Regression model implemented in the previous assignment, using the same input and test datasets. We compare the Accuracy and the Kaggle Scores for the different models in Table  \ref{result-table}.
+In this section, we provide the results for our experiments. We compare the results of our implementations of Vanilla RNN, LSTM, and GRU RNN models. We also modified and ran the Logistic Regression model implemented in the previous assignment, using the same input and test datasets. We compare the Accuracy and the Kaggle Scores for the different models in Table  \ref{result-table}. For the reference, our Kaggle team name is "masc-lab". 
+
+In Table \ref{result-table}, the last field shows the results of our attempt to improve the result by training GRU RNN with additional data. The data was parsed from the internet, and consisted of transcripts of speeches of both candidates. The results were worse than expected, as we assumed their tweeting and speech patterns were similar. However, it ended up giving us worse results.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-                      & \textbf{Vanilla RNN} & \textbf{LSTM} & \textbf{GRU} & \textbf{Logistic Regression} \\ \hline
-\textbf{Kaggle Score} &                      &               &              &                              \\ \hline
-\textbf{Accuracy}     &                      &               &              &                              \\ \hline
+                      & \textbf{Vanilla RNN} & \textbf{LSTM} & \textbf{GRU} & \textbf{Logistic Regression} & \textbf{Additional training}\\ \hline
+\textbf{Kaggle Score} &   0.30678            &  0.28241      &   0.18690    &  0.28082     &   2.21935      \\ \hline
+\textbf{Accuracy}     &   89.74\%            &  93.19\%        &   95.72\%  &   93.26\%       &   77.48\%      \\ \hline
 \end{tabular}
-\caption{Accuracy and Kaggle scores for the different models}
+\caption{Accuracy on the validation set and Kaggle scores for the different models}
 \label{result-table}
 \end{table}

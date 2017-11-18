@@ -9,53 +9,55 @@ Different versions of RNN models were implemented, trained and tested. Namely, t
 	\item Gated Recurrent Unites (GRU)
 \end{itemize}
 
-The following three sections briefly report the hyperparameters used for each of the models. We also report the Kaggle score and accuracy percentage on the validation set. For the reference, our team in Kaggle is named "masc-lab".
+The following three sections briefly report the hyperparameters used for each of the models. The results for all of the models are in the Results section, and summarized in Table \ref{result-table}
 	
 \subsection*{2.5.1 Vanilla RNN}
-The following TensorFlow class was used for Vanilla RNN implementation. 
-\(\texttt{tf.nn.rnn_cell.BasicRNNCell}\)
-Table \ref{vanilla-table} summarizes the results for Vanilla RNN implementation.
+The following TensorFlow class was used for Vanilla RNN implementation:\\ \\
+\texttt{tf.nn.rnn\_cell.BasicRNNCell}\\ \\
+Table \ref{vanilla-table} summarizes the hyperparameter selection for Vanilla RNN training.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|}
 \hline
- Kaggle score & 0.42 \\ \hline
- Accuracy & 91.23\% \\ \hline
  Batch size & 1 \\ \hline
  State vector size & 128 \\ \hline
  Epoch & 4 \\ \hline
 \end{tabular}
-\caption{Hyperparamets and results of Vanilla RNN}
+\caption{Hyperparameters for Vanilla RNN}
 \label{vanilla-table}
 \end{table}
 
 \subsection*{2.5.2 LSTM}
+The following TensorFlow class was used for LSTM implementation:\\ \\
+\texttt{tf.nn.rnn\_cell.LSTMCell}\\ \\
+Table \ref{lstm-table} summarizes the hyperparameter selection for RNN training with LSTM.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|}
 \hline
- Kaggle score & 0.42 \\ \hline
- Accuracy & 91.23\% \\ \hline
  Batch size & 1 \\ \hline
- State vector size & 128 \\ \hline
- Epoch & 4 \\ \hline
+ State vector size & 64 \\ \hline
+ Epoch & 2 \\ \hline
 \end{tabular}
-\caption{Hyperparamets and results of Vanilla RNN}
-\label{vanilla-table}
+\caption{Hyperparameters for LSTM}
+\label{lstm-table}
 \end{table}
-\subsection*{2.5.3 Vanilla GRU}
+
+\subsection*{2.5.3 GRU}
+The following TensorFlow class was used for GRU implementation:\\ \\
+\texttt{tf.nn.rnn\_cell.GRUCell}\\ \\
+Table \ref{gru-table} summarizes the hyperparameter selection for RNN training with GRU.
+
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|}
 \hline
- Kaggle score & 0.42 \\ \hline
- Accuracy & 91.23\% \\ \hline
  Batch size & 1 \\ \hline
- State vector size & 128 \\ \hline
- Epoch & 4 \\ \hline
+ State vector size & 256 \\ \hline
+ Epoch & 5 \\ \hline
 \end{tabular}
-\caption{Hyperparamets and results of Vanilla RNN}
-\label{vanilla-table}
+\caption{Hyperparameters for GRU}
+\label{gru-table}
 \end{table}
 
 
