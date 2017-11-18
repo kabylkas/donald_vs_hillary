@@ -5,10 +5,57 @@ The hyperparameters that we played with are batch size, state vector size, and t
 Different versions of RNN models were implemented, trained and tested. Namely, the following three RNN methods were tried out:
 \begin{itemize}
 	\item Vanilla RNN
-	\item LSTM
-	\item GRU
+	\item Long-Short Term Memory (LSTM)
+	\item Gated Recurrent Unites (GRU)
 \end{itemize}
 
+The following three sections briefly report the hyperparameters used for each of the models. We also report the Kaggle score and accuracy percentage on the validation set. For the reference, our team in Kaggle is named "masc-lab".
+	
 \subsection*{2.5.1 Vanilla RNN}
+The following TensorFlow class was used for Vanilla RNN implementation. 
+\(\texttt{tf.nn.rnn_cell.BasicRNNCell}\)
+Table \ref{vanilla-table} summarizes the results for Vanilla RNN implementation.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+ Kaggle score & 0.42 \\ \hline
+ Accuracy & 91.23\% \\ \hline
+ Batch size & 1 \\ \hline
+ State vector size & 128 \\ \hline
+ Epoch & 4 \\ \hline
+\end{tabular}
+\caption{Hyperparamets and results of Vanilla RNN}
+\label{vanilla-table}
+\end{table}
+
+\subsection*{2.5.2 LSTM}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+ Kaggle score & 0.42 \\ \hline
+ Accuracy & 91.23\% \\ \hline
+ Batch size & 1 \\ \hline
+ State vector size & 128 \\ \hline
+ Epoch & 4 \\ \hline
+\end{tabular}
+\caption{Hyperparamets and results of Vanilla RNN}
+\label{vanilla-table}
+\end{table}
+\subsection*{2.5.3 Vanilla GRU}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+ Kaggle score & 0.42 \\ \hline
+ Accuracy & 91.23\% \\ \hline
+ Batch size & 1 \\ \hline
+ State vector size & 128 \\ \hline
+ Epoch & 4 \\ \hline
+\end{tabular}
+\caption{Hyperparamets and results of Vanilla RNN}
+\label{vanilla-table}
+\end{table}
 
 
